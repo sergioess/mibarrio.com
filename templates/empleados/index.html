@@ -1,0 +1,41 @@
+{% include '/header.html' %}
+    <div class="container ">
+        <br>
+        <a href="{{ url_for('empleado_bp.create') }}" class="btn btn-primary" >Crear Empleado</a>
+        <br>
+        <br>
+        <table class="table table-light">
+            <thead class="thead-light">
+                <tr>
+                    <th>#</th>
+                    <th>Foto</th>
+                    <th>Nombre</th>
+                    <th>Correo</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for empleado in empleados %}
+
+                    <tr>
+                        <td>{{empleado[0]}}</td>
+                        <td>
+                            <img class="img-thumbnail" width="100px" src="/uploads/{{empleado[3]}}" alt="">
+                        </td>
+                        <td>{{empleado[1]}}</td>
+                        <td>{{empleado[2]}}</td>
+                        <td>
+                            <a class="btn btn-sm btn-warning" href="/empleados/edit/{{empleado[0]}}">Editar</a> 
+                            | 
+                            <a onclick="return confirm('Desea borrar el registro?')" class="btn btn-sm btn-danger"  href="/empleados/destroy/{{empleado[0]}}">Eliminar</a>
+                            
+                        </td>
+
+                    </tr>            
+
+                {% endfor %}
+
+            </tbody>
+        </table>
+    </div>
+{% include '/footer.html' %}

@@ -1,0 +1,73 @@
+{% include '/header.html' %}
+    <div class="container">
+        <br>
+
+        {% with messages = get_flashed_messages() %}
+
+            {% if messages %}
+
+                <div.<div class="alert alert-danger" role="alert">
+                    {% for message in messages %}
+
+                        {{ message }}
+
+                    {% endfor %}
+                </div>
+
+
+            {% endif %}
+
+            <br>
+        {% endwith %}
+        <form  method="POST" action="{{ url_for('empleado_bp.store') }}" enctype="multipart/form-data">
+
+            <div class="card">
+                <div class="card-header">
+                    <h3> Ingresar Empleado</h3>
+                </div>
+                <div class="card-body">
+                                     
+
+                    <table class="table table-striped table-hover table-sm table-responsive-sm">
+                        <div class="form-group">
+                            <tr>
+                                <th>
+                                    <label for="txtNombre">Nombre</label>
+                                </th>
+                                <td><input  class="form-control" type="text" name="txtNombre" id="txtNombre" > </td>
+                            </tr>
+                        </div>
+
+                        <div class="form-group">
+                            <tr>
+                                <th>
+                                    <label for="txtCorreo">Correo</label>
+                                </th>
+                                <td><input class="form-control" type="text" name="txtCorreo" id="txtCorreo" ></td>
+                            </tr>
+                        </div>
+                        <div class="form-group">
+                            <tr>
+                                <th>
+                                    <label for="txtFoto">Foto</label>
+                                </th>
+                                <td><input  class="form-control"  type="file" name="txtFoto" id="txtFoto"  ></td>
+                            </tr>    
+                        </div>
+   
+                    </table>
+                    <div class="form-group">
+                        <input class="btn btn-success " type="submit" value="Agregar">
+                        <a class="btn btn-primary " href="{{ url_for('empleado_bp.index') }}"  >Regresar</a>
+                    </div>
+                </div>
+            </div>
+
+            
+        </form>    
+    </div>
+{% include '/footer.html' %}
+
+
+
+

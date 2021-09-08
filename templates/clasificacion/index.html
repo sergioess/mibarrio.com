@@ -1,0 +1,43 @@
+{% include '/header.html' %}
+<div class="container">
+  <br />
+  <div class="row justify-content-center">
+    <h2>Clasificacion</h2>
+  </div>
+  <table class="table table-light">
+    <thead>
+      <tr>
+        <td>#</td>
+        <td>Nombre</td>
+        <td>Acciones</td>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for clasificacion in clasificaciones %}
+      <tr>
+        <td>{{loop.index0 + 1}}</td>
+        <!-- <td>{{clasificacion['id']}}</td> -->
+        <td>{{clasificacion['nombre_clasificacion']}}</td>
+        <td>
+          <a
+            class="btn btn-warning btn-sm"
+            href="/clasificacion/edit/{{clasificacion['id']}}"
+            >Editar</a
+          >
+
+          |
+          <a
+            onclick="return confirm('Desea borrar la Clasificación?')"
+            class="btn btn-danger btn-sm"
+            href="/clasificacion/destroy/{{clasificacion['id']}}"
+            >Eliminar</a
+          >
+        </td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+</div>
+
+{% include '/footer.html' %}

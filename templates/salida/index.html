@@ -1,0 +1,47 @@
+{% include '/header.html' %}
+    <div class="container">
+        <br>
+        <div class="row justify-content-center">
+            <h2>Salidas</h2>
+        </div>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Fecha</td>
+                    <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for salida in salidas %}
+                    <tr>
+                        <td>{{salida[0]}}</td>
+
+                        <td>{{salida[1]}}</td>
+                        <td>{{salida[2]}}</td>
+                        <td>{{salida[3]}}</td>
+                        <td>
+                            <!-- <a class="btn btn-warning btn-sm" href="/salida/edit/{{salida[0]}}">Editar</a> -->
+
+                            <a class="btn btn-primary btn-sm py-0 " href="#" data-toggle="modal"
+                            data-target="#modaledit{{salida[0]}}"> <i class="far fa-edit"></i></a>
+
+                            |
+                            <a  onclick="return confirm('Desea borrar la salida?')"  class="btn btn-danger btn-sm py-0" href="/salida/destroy/{{salida[0]}}"> <i class="far fa-trash-alt"></i></a> 
+
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+            
+        </table>
+
+    </div>
+
+{% include '/footer.html' %}

@@ -1,0 +1,47 @@
+{% include '/header.html' %}
+    <div class="container">
+        <br>
+        <div class="row justify-content-center">
+            <h2>Entradas</h2>
+        </div>
+        <table class="table table-light">
+            <thead>
+                <tr>
+                    <td>#</td>
+                    <td>Fecha</td>
+                    <td>Producto</td>
+                    <td>Cantidad</td>
+                    <td>Acciones</td>
+                </tr>
+            </thead>
+
+            <tbody>
+
+                {% for entrada in entradas %}
+                    <tr>
+                        <td>{{entrada[0]}}</td>
+
+                        <td>{{entrada[1]}}</td>
+                        <td>{{entrada[2]}}</td>
+                        <td>{{entrada[3]}}</td>
+                        <td>
+                            <!-- <a class="btn btn-warning btn-sm" href="/entrada/edit/{{entrada[0]}}">Editar</a> -->
+
+                            <a class="btn btn-primary btn-sm py-0 " href="#" data-toggle="modal"
+                            data-target="#modaledit{{entrada[0]}}"> <i class="far fa-edit"></i></a>
+
+                            |
+                            <a  onclick="return confirm('Desea borrar la entrada?')"  class="btn btn-danger btn-sm py-0" href="/entrada/destroy/{{entrada[0]}}"> <i class="far fa-trash-alt"></i></a> 
+
+                        </td>
+                    </tr>
+                {% endfor %}
+
+            </tbody>
+
+            
+        </table>
+
+    </div>
+
+{% include '/footer.html' %}

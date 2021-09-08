@@ -1,0 +1,113 @@
+
+    <form method="POST" action="{{ url_for('producto_bp.update') }}" enctype="multipart/form-data">
+
+        <input type="hidden" name="txtId" id="txtId" value="{{producto[0]}}">
+
+        <div class="modal fade" id="modaledit{{producto[0]}}" tabindex="-1" role="dialog" aria-labelledby="modaledit{{producto[0]}}"  aria-hidden="true"> 
+
+            <div class="modal-dialog modal-md modal-dialog-centered" role="document">
+                <div class="modal-content">
+
+                    <div class="modal-header">
+                        <h4 class="modal-tittle">Editar Producto</h4>
+                        <br>
+                        
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Cerrar">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+
+                    </div>
+
+                    <div class="modal-body p-2">
+                        <div class="row  justify-content-md-center">
+                            
+                            <h5 class="text-center">{{producto[1]}}</h5>
+                        </div>
+                        
+                        <div class="row mt-2">
+                            
+                                <div class="col-md">
+                                    <label for="txtNombre">Nombre</label>
+                                </div>
+                                <div class="col-md d-inline">
+                                    <input class="form-control d-inline" type="text" name="txtNombre" id="txtNombre" value="{{producto[1]}}" required>
+                                </div>
+                            
+                        </div>
+
+
+                        <div class="row mt-2">
+                         
+                                <div class="col-md">
+                                    <label for="txtNombre">Clasificación</label>
+                                </div>
+                                <div class="col-md  d-inline">
+                                    <select id="txtClasificacion" name="txtClasificacion">
+                                        {% for clasificacion in clasificaciones %}
+                                            {% if clasificacion[0] == producto[5] %}
+                                                <option value="{{clasificacion[0]}}" selected>{{clasificacion[1]}}</option>
+                                            {% else %}
+                                                <option value="{{clasificacion[0]}}">{{clasificacion[1]}}</option>
+                                            {% endif %}
+                                        {% endfor %}
+                                    </select>
+                                </div>
+                           
+                        </div>                        
+
+
+                        <div class="row mt-2">
+                            
+                                <div class="col-md">
+                                    <label for="txtPrecio">Precio</label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-control" type="text" name="txtPrecio" id="txtPrecio"  value="{{producto[7]}}"  required>
+                                </div>
+                            
+                        </div>
+
+
+                        <div class="row mt-2">
+                           
+                                <div class="col-md">
+                                    <label for="txtMedida">Medida</label>
+                                </div>
+                                <div class="col-md">
+                                    <input class="form-control" type="text" name="txtMedida" id="txtMedida"  value="{{producto[3]}}"  required>
+                                </div>
+                            
+                        </div>   
+                        
+
+                        <div class="row mt-2">
+                            <div class="form-group">
+                                <div class="col-md">
+                                    <label for="txtNombre">Imagen</label>
+                                    <img class="img-thumbnail" width="100px" src="/uplproductos/{{producto[4]}}" alt="">
+                                </div>
+                                <div class="col-md">
+                                    <input  class="form-control"  type="file" name="txtFoto" id="txtFoto"  >
+                                </div>
+                            </div>
+                        </div>                        
+
+                    </div>
+
+                    <div class="modal-footer">
+                        <div class="row  p-2">
+                            <input class="btn btn-success " type="submit" value="Agregar">
+                        </div>
+                    </div>
+
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+
+
+    </form>
