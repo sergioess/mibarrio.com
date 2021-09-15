@@ -1,7 +1,7 @@
 from flask import Blueprint
 
 # from controllers.ClasificacionController import index, store, show, update, destroy, create, edit
-from controllers.ClasificacionControllerMdb import index, store, show, update, destroy, create, edit
+from controllers.ClasificacionControllerPst import index, store, show, update, destroy, create, edit
 
 clasificacion_bp = Blueprint(
     'clasificacion_bp', __name__, template_folder='templates/clasificacion')

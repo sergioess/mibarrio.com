@@ -1,4 +1,5 @@
 from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 from flask import render_template, url_for
 
 
@@ -8,13 +9,17 @@ from routes.clasificacion_bp import clasificacion_bp
 from routes.entrada_bp import entrada_bp
 from routes.producto_bp import producto_bp
 from routes.salida_bp import salida_bp
-from flask_mongoalchemy import MongoAlchemy
+# from flask_mongoalchemy import MongoAlchemy
 
 from flask import send_from_directory
 
 
 app = Flask(__name__)
 app.config.from_object('config')
+
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:12345678g@localhost:5432/mitienda'
+app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://oxwttxarfidlxi:89e47cacfc5926776ab52a7e485b08a91bf9632736ca0843d80b6356b506f3f2@ec2-3-231-69-204.compute-1.amazonaws.com:5432/d3hr8qndm4p50h'
+db = SQLAlchemy(app)
 
 
 app.register_blueprint(user_bp, url_prefix='/users')

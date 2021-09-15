@@ -1,12 +1,24 @@
 from flask import Flask
-from flask_mongoalchemy import MongoAlchemy
+# from app import db
+from flask_sqlalchemy import SQLAlchemy
+
 
 app = Flask(__name__)
-app.config.from_object('config')
-
-db = MongoAlchemy(app)
+db = SQLAlchemy(app)
 
 
-class clasificacion(db.Document):
-    id = db.StringField()
-    nombre_clasificacion = db.StringField()
+class Clasificacion(db.Model):
+    __tablename__ = 'clasificaciones'
+
+    id = db.Column(db.Integer, primary_key=True)
+    nombre = db.Column(db.String(50))
+
+    def __init__(self, nombre):
+        self.nombre = nombre
+
+    # def __repr__(self):
+    #     return f'<clasificacion {self.nombre_clasificacion}>'
+
+    @staticmethod
+    def get_all():
+        return Clasificacion.query.all()
