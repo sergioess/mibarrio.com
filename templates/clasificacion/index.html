@@ -4,6 +4,19 @@
   <div class="row justify-content-center">
     <h2>Clasificaciones</h2>
   </div>
+  <div class="card-header">
+    <a
+      class="btn btn-primary btn-sm"
+      href="#"
+      data-toggle="modal"
+      data-target="#modalcreate"
+    >
+      Nueva Clasificación</a
+    >
+    {% include '/clasificacion/modal/create.html' %}
+  </div>
+  <br />
+  <br />
   <table class="table table-light">
     <thead>
       <tr>
@@ -21,18 +34,23 @@
         <td>{{clasificacion['nombre']}}</td>
         <td>
           <a
-            class="btn btn-warning btn-sm"
-            href="/clasificacion/edit/{{clasificacion['id']}}"
-            >Editar</a
+            class="btn btn-warning btn-sm py-0"
+            href="#"
+            data-toggle="modal"
+            data-target="#modaledit{{clasificacion['id']}}"
           >
+            <i class="far fa-edit"></i
+          ></a>
 
           |
+
           <a
-            onclick="return confirm('Desea borrar la Clasificación?')"
-            class="btn btn-danger btn-sm"
+            onclick="return confirm('Desea borrar la Categoria?')"
+            class="btn btn-danger btn-sm py-0"
             href="/clasificacion/destroy/{{clasificacion['id']}}"
-            >Eliminar</a
           >
+            <i class="far fa-trash-alt"></i
+          ></a>
         </td>
       </tr>
       {% endfor %}
@@ -40,4 +58,5 @@
   </table>
 </div>
 
-{% include '/footer.html' %}
+{% for clasificacion in clasificaciones %} {% include
+'/clasificacion/modal/edit.html' %} {% endfor %} {% include '/footer.html' %}

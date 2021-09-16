@@ -1,7 +1,7 @@
 import sys
 from flask import Flask
 from flask import config, render_template, redirect, url_for, request, abort, flash, jsonify, json, make_response
-from flask_mongoalchemy import MongoAlchemy
+# from flask_mongoalchemy import MongoAlchemy
 from datetime import datetime
 from models.Clasificacion import Clasificacion
 from bson.json_util import dumps
@@ -30,6 +30,7 @@ def index():
     # print(listaClasificaciones)
 
     clasificaciones = Clasificacion.get_all()
+    # clasificaciones = Clasificacion.get_by_id(1)
 
     return render_template('/clasificacion/index.html', clasificaciones=clasificaciones)
 
@@ -44,8 +45,10 @@ def edit(clasificacion_id):
 
 
 def store():
-
-    return "Nada"
+    _nombre = request.form.get('txtNombre')
+    clasifica = Clasificacion(nombre=_nombre, id_tienda=1, activo=1)
+    clasifica.save()
+    return redirect('/clasificacion')
 
 
 def show(clasificacion_id):
@@ -53,10 +56,16 @@ def show(clasificacion_id):
 
 
 def update():
-
-    return "Nada"
+    _id = request.form.get('txtId')
+    clasificacion = Clasificacion.get_by_id(_id)
+    clasificacion.nombre = request.form.get('txtNombre')
+    clasificacion.save()
+    return redirect('/clasificacion')
 
 
 def destroy(clasificacion_id):
-
+    _id = request.form.get('txtId')
+    clasificacion = Clasificacion.get_by_id(clasificacion_id)
+    clasificacion.activo = 0
+    clasificacion.save()
     return redirect('/clasificacion')
