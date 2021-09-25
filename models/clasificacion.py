@@ -29,7 +29,7 @@ class Clasificacion(db.Model):
     @ staticmethod
     def get_all():
         # return db.session.execute("SELECT * FROM clasificaciones order by nombre")
-        return Clasificacion.query.filter_by(activo=1).order_by(Clasificacion.id.asc()).all()
+        return Clasificacion.query.filter_by(activo=1)
 
     @ staticmethod
     def get_by_id(id):
