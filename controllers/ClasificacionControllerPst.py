@@ -7,6 +7,8 @@ from models.Clasificacion import Clasificacion
 from bson.json_util import dumps
 from flask_sqlalchemy import SQLAlchemy
 
+# TODO
+from flask_login import login_required
 import os
 
 
@@ -15,7 +17,8 @@ app.config.from_object('config')
 
 db = SQLAlchemy(app)
 
-
+# TODO
+@login_required
 def index():
 
     # clasificaciones = clasificacion.query.all()

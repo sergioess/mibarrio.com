@@ -1,11 +1,10 @@
-import sys
+
 from flask import Flask
 from flask import config, render_template, redirect, url_for, request, abort, flash
 from flaskext.mysql import MySQL
+
 from datetime import datetime
-
-
-
+import sys
 import os
 
 

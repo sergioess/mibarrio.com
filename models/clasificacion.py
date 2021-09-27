@@ -8,7 +8,7 @@ db = SQLAlchemy(app)
 
 
 class Clasificacion(db.Model):
-    __tablename__ = 'clasificaciones'
+    __tablename__ = 'categorias'
 
     id = db.Column(db.Integer, primary_key=True)
     nombre = db.Column(db.String(50))
